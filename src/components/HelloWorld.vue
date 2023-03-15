@@ -10,6 +10,7 @@ defineProps<{
       <li>1</li>
       <li>2</li>
       <li>3</li>
+      <li>3</li>
     </ul>
     <h1 class="green">{{ msg }}</h1>
     <h3>

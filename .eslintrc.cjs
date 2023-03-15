@@ -7,7 +7,7 @@ module.exports = {
     './.eslintrc-auto-import.json',
     'plugin:vue/vue3-essential',
     'eslint:recommended',
-    // '@vue/eslint-config-typescript/recommended', // 需安装 @vue/eslint-config-typescript 依赖，npm i @vue/eslint-config-typescript -D
+    '@vue/eslint-config-typescript/recommended', // 需安装 @vue/eslint-config-typescript 依赖，npm i @vue/eslint-config-typescript -D
     '@vue/eslint-config-prettier'
   ],
   overrides: [
@@ -54,13 +54,13 @@ module.exports = {
     'eol-last': [2, 'always'], // 在文件末尾要求或禁止换行
     'func-call-spacing': [2, 'never'], // 要求或不允许函数标识符及其调用之间有间距
     'guard-for-in': 2, // 要求 for-in 循环包含 if 语句
-    indent: [
-      2,
-      2,
-      {
-        SwitchCase: 1
-      }
-    ], // 强制一致的缩进
+    // indent: [
+    //   2,
+    //   2,
+    //   {
+    //     SwitchCase: 1
+    //   }
+    // ], // 强制一致的缩进
     'jsx-quotes': [2, 'prefer-double'], // 强制在 JSX 属性中一致地使用双引号或单引号
     'key-spacing': [
       2,
