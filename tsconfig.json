@@ -1,0 +1,19 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "types": [
+      "@intlify/vite-plugin-vue-i18n/client"
+    ],
+  },
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
+}

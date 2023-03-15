@@ -1,0 +1,7 @@
+{
+  "globals": {
+    "useDark": true,
+    "useToggle": true,
+    "ElMessage": true
+  }
+}
