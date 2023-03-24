@@ -6,7 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import { ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
-import WindiCSS from 'vite-plugin-windicss'
+// import WindiCSS from 'vite-plugin-windicss'
 // import Markdown from 'vite-plugin-vue-markdown'
 // import Prism from 'markdown-it-prism';
 import ViteFonts from 'vite-plugin-fonts'
@@ -27,7 +27,7 @@ export default () => {
     svgLoader(),
     AutoImport({
       dts: './src/auto-imports.d.ts',
-      // imports: ['vue', 'pinia', 'vue-router', 'vue-i18n', , '@vueuse/core'],
+      imports: ['vue', 'pinia', 'vue-router', 'vue-i18n', , '@vueuse/core'],
       // Generate corresponding .eslintrc-auto-import.json file.
       // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
       eslintrc: {
@@ -56,10 +56,10 @@ export default () => {
     }),
     VueI18nPlugin({
       include: [resolve(__dirname, '../locales/**')]
-    }),
-    WindiCSS({
-      safelist: defaultClasses
     })
+    // WindiCSS({
+    //   safelist: defaultClasses
+    // })
     // Markdown({
     //   wrapperClasses: defaultClasses,
     //   headEnabled: false,

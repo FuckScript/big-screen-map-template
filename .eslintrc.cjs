@@ -33,6 +33,7 @@ module.exports = {
     'block-spacing': [2, 'always'], // 在打开块之后和关闭块之前禁止或强制块内的空格
     'brace-style': [2, '1tbs'], // 对块执行一致的大括号样式
     'comma-dangle': [2, 'never'], // 不允许尾随逗号
+    'vue/multi-word-component-names': 'off',
     'comma-spacing': [
       2,
       {
