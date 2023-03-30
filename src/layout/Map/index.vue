@@ -3,7 +3,7 @@
     <MapboxMap
       style="height: 100%"
       v-bind="options"
-      @mb-created="(mapInstance) => (map = mapInstance)"
+      @mb-created="(mapInstance: any) => (map = mapInstance)"
     >
       <!-- map-style="mapbox://styles/mapbox/streets-v11" -->
       <MapboxMarker
@@ -20,20 +20,20 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { shenzhen } from './shenzhen'
 import options from './options'
 import { baseLayers } from './baseLayers'
-// import { getCountBjDataByArea } from '@/api/modules/mapBase'
+import { getCountBjDataByArea } from '@/api/modules/mapBase'
 
 const map = ref()
 // const mapPath = ref(['shenzhen'])
 
-let hoveredStateId = null
+let hoveredStateId: null
 
-const mbDrag = (e) => {
+const mbDrag = (e: any) => {
   console.log('🚀 ~ file: Map.vue:69 ~ mbDrag ~ e:', e)
 }
 
@@ -51,13 +51,13 @@ const addLayers = () => {
 }
 
 // 地图填充颜色
-const mapColorFill = (mapData) => {
+const mapColorFill = (mapData: { type?: string; features: any }) => {
   const datas = mapData.features
-    .map((item) => Number.parseInt(item.properties.nums) ?? 0)
-    .sort((a, b) => a - b)
+    .map((item: { properties: { nums: string } }) => Number.parseInt(item.properties.nums) ?? 0)
+    .sort((a: number, b: number) => a - b)
   const [v0 = 0, v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0, v7 = 0, v8 = 0] =
     [10, 20, 100, 30, 200, 50, 60, 70, 90] || datas
-  console.log(v0, v1, v2, v3, v4, v5, v6, v7, v8)
+  // console.log(v0, v1, v2, v3, v4, v5, v6, v7, v8)
   const filters = {
     nums1: ['<=', ['get', 'nums'], v0],
     nums2: ['all', ['>', ['get', 'nums'], v0], ['<=', ['get', 'nums'], v1]],
@@ -95,7 +95,7 @@ const mapColorFill = (mapData) => {
 
 const addEventListeners = () => {
   //鼠标悬停事件
-  map.value.on('mousemove', 'map-area-base', (e) => {
+  map.value.on('mousemove', 'map-area-base', (e: { features: string | any[] }) => {
     if (hoveredStateId === e.features[0].properties.adcode) {
       return
     }
@@ -129,7 +129,7 @@ const addEventListeners = () => {
   })
 
   // 绑定点位图层的点击事件 获取当前点击的要素
-  map.value.on('click', 'map-area-base', (e) => {
+  map.value.on('click', 'map-area-base', (e: { point: any }) => {
     const features = map.value.queryRenderedFeatures(e.point)
     if (features.length) {
       const name = features[0].properties.name ?? ''
@@ -146,12 +146,12 @@ onMounted(() => {
     addEventListeners()
 
     mapColorFill(shenzhen)
-    /* getCountBjDataByArea({ addressLevel: 6, addressId: '4403' }).then((res) => {
+    getCountBjDataByArea({ addressLevel: 6, addressId: '4403' }).then((res) => {
       const { features } = res.data
-      areaData.features.forEach((item) => {
+      shenzhen.features.forEach((item: any) => {
         item.properties.nums = 0
         item.properties.percentage = '0%'
-        features.forEach((d) => {
+        features.forEach((d: { properties: { address: string; cnt: any; percent: any } }) => {
           if (
             (item.properties.name === '光明区' && d.properties.address === '光明新区') ||
             (item.properties.name === '光明新区' && d.properties.address === '光明区')
@@ -165,8 +165,8 @@ onMounted(() => {
           }
         })
       })
-      mapColorFill(areaData)
-    }) */
+      mapColorFill(shenzhen)
+    })
   })
 })
 </script>

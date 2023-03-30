@@ -7,10 +7,12 @@ import AppMain from './AppMain.vue'
 
 <template>
   <div class="app-wrapper">
-    <Header />
     <Map />
-    <NavBar />
+    <!-- <AutoScale> -->
+    <Header />
+    <!-- </AutoScale> -->
     <AppMain />
+    <NavBar />
   </div>
 </template>
 

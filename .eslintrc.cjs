@@ -34,6 +34,7 @@ module.exports = {
     'brace-style': [2, '1tbs'], // 对块执行一致的大括号样式
     'comma-dangle': [2, 'never'], // 不允许尾随逗号
     'vue/multi-word-component-names': 'off',
+    "@typescript-eslint/no-explicit-any": ["off"],
     'comma-spacing': [
       2,
       {

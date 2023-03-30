@@ -14,8 +14,10 @@
 
 <style scoped>
 .item {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   display: flex;
+  width: 50px;
+  height: 50px;
 }
 
 .details {

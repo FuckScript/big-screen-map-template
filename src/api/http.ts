@@ -1,4 +1,9 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  //  AxiosRequestConfig,
+  AxiosResponse
+} from 'axios'
 import showCodeMessage from '@/api/code'
 import { formatJsonToUrlParams, instanceObject } from '@/utils/format'
 
@@ -18,9 +23,12 @@ const axiosInstance: AxiosInstance = axios.create({
 
 // 请求拦截器
 axiosInstance.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config) => {
     // TODO 在这里可以加上想要在请求发送前处理的逻辑
     // TODO 比如 loading 等
+    config.headers['Authorization'] =
+      'Bearer ' +
+      'eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjM3ZjA2ZjQ0LTM4ODUtNDZhZS1iMDYzLWMzMDRlOGUwZjgzNCJ9.8qKVdmwQ8Tx68nVrn3PbX2TlvCxFBrwfqpVsqn1VYwFRg8P53WDlhya2eg-cb8POOsECiqBrNU6_paCA_wCUAg'
     return config
   },
   (error: AxiosError) => {
