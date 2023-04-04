@@ -23,10 +23,12 @@
 <script setup lang="ts">
 import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { shenzhen } from './shenzhen'
+import type { MapMouseEvent } from 'mapbox-gl'
+import { shenzhen } from './data/shenzhen'
+import { baoan } from './data/baoan'
 import options from './options'
 import { baseLayers } from './baseLayers'
-import { getCountBjDataByArea } from '@/api/modules/mapBase'
+// import { getCountBjDataByArea } from '@/api/modules/mapBase'
 
 const map = ref()
 // const mapPath = ref(['shenzhen'])
@@ -44,6 +46,7 @@ const addSource = () => {
   // map.value.addSource('circleRadius', { type: 'geojson', data: null })
   map.value.addSource('map-source', { type: 'geojson', data: shenzhen })
 }
+// 添加图层
 const addLayers = () => {
   baseLayers.forEach((layer) => {
     map.value.addLayer(layer)
@@ -55,9 +58,7 @@ const mapColorFill = (mapData: { type?: string; features: any }) => {
   const datas = mapData.features
     .map((item: { properties: { nums: string } }) => Number.parseInt(item.properties.nums) ?? 0)
     .sort((a: number, b: number) => a - b)
-  const [v0 = 0, v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0, v7 = 0, v8 = 0] =
-    [10, 20, 100, 30, 200, 50, 60, 70, 90] || datas
-  // console.log(v0, v1, v2, v3, v4, v5, v6, v7, v8)
+  const [v0 = 0, v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0, v7 = 0, v8 = 0] = datas
   const filters = {
     nums1: ['<=', ['get', 'nums'], v0],
     nums2: ['all', ['>', ['get', 'nums'], v0], ['<=', ['get', 'nums'], v1]],
@@ -93,6 +94,54 @@ const mapColorFill = (mapData: { type?: string; features: any }) => {
   ])
 }
 
+const getBounds = (arrListA: any[]) => {
+  let [minLng, maxLng, minLat, maxLat] = [180, 0, 90, 0]
+  arrListA.map((arrListB: any[]) => {
+    arrListB.map((arrListC: any[]) => {
+      if (arrListC[0] && typeof arrListC[0] === 'object') {
+        arrListC.map((point: [any, any]) => {
+          const [lng, lat] = point
+          lng > maxLng && (maxLng = lng)
+          lng < minLng && (minLng = lng)
+          lat > maxLat && (maxLat = lat)
+          lat < minLat && (minLat = lat)
+        })
+      } else {
+        const [lng, lat] = arrListC
+        lng > maxLng && (maxLng = lng)
+        lng < minLng && (minLng = lng)
+        lat > maxLat && (maxLat = lat)
+        lat < minLat && (minLat = lat)
+      }
+    })
+  })
+  return [
+    [maxLng, maxLat],
+    [minLng, minLat]
+  ] // 右上 左下
+}
+
+const fitCurrentAreaBounds = ({ coordinates = [] }) => {
+  if (coordinates.length === 0) {
+    return
+  }
+  const bounds = getBounds(coordinates)
+  if (bounds) {
+    const scaleHeight = parseFloat((window.innerHeight / 1080).toFixed(5))
+    const scaleWidth = parseFloat((window.innerWidth / 1920).toFixed(5))
+    const mapPad = {
+      top: scaleHeight * 350,
+      bottom: scaleHeight * 220,
+      left: scaleWidth * 520,
+      right: scaleWidth * 580
+    }
+    map.value.fitBounds(bounds, {
+      padding: mapPad,
+      pitch: 45
+    })
+  }
+}
+//  添加事件
 const addEventListeners = () => {
   //鼠标悬停事件
   map.value.on('mousemove', 'map-area-base', (e: { features: string | any[] }) => {
@@ -129,13 +178,23 @@ const addEventListeners = () => {
   })
 
   // 绑定点位图层的点击事件 获取当前点击的要素
-  map.value.on('click', 'map-area-base', (e: { point: any }) => {
-    const features = map.value.queryRenderedFeatures(e.point)
-    if (features.length) {
-      const name = features[0].properties.name ?? ''
-      console.log('name', name)
-      // if (mapPath.value.length > 1 && mapPath.value.contains(name)) return
-    }
+  // map.value.on('click', 'map-area-base', (e: { point: any }) => {
+  //   const features = map.value.queryRenderedFeatures(e.point)
+  //   if (features.length) {
+  //     const name = features[0].properties.name ?? ''
+  //     console.log('name', name)
+  //     // if (mapPath.value.length > 1 && mapPath.value.contains(name)) return
+  //   }
+  // })
+
+  map.value.on('dblclick', (e: MapMouseEvent) => {
+    console.log(`A dblclick event has occurred at ${e.lngLat}`)
+    map.value.getSource('map-source').setData(baoan)
+    const coordinates: any = shenzhen.features[3].geometry.coordinates
+    console.log('🚀 ~ file: index.vue:147 ~ map.value.on ~ coordinates:', coordinates)
+    fitCurrentAreaBounds({
+      coordinates: coordinates
+    })
   })
 }
 
@@ -146,7 +205,7 @@ onMounted(() => {
     addEventListeners()
 
     mapColorFill(shenzhen)
-    getCountBjDataByArea({ addressLevel: 6, addressId: '4403' }).then((res) => {
+    /* getCountBjDataByArea({ addressLevel: 6, addressId: '4403' }).then((res) => {
       const { features } = res.data
       shenzhen.features.forEach((item: any) => {
         item.properties.nums = 0
@@ -165,8 +224,8 @@ onMounted(() => {
           }
         })
       })
-      mapColorFill(shenzhen)
-    })
+      // mapColorFill(shenzhen)
+    }) */
   })
 })
 </script>

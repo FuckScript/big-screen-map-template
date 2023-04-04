@@ -8,7 +8,7 @@ export const shenzhen = {
         name: '罗湖区',
         center: [114.123885, 22.555341],
         centroid: [114.148158, 22.57487],
-        nums: 100,
+        nums: 6970,
         level: 'district',
         parent: {
           adcode: 440300
@@ -212,7 +212,7 @@ export const shenzhen = {
         name: '福田区',
         center: [114.05096, 22.541009],
         centroid: [114.046594, 22.543431],
-        nums: 200,
+        nums: 21973,
         level: 'district',
         parent: {
           adcode: 440300
@@ -348,7 +348,7 @@ export const shenzhen = {
         name: '南山区',
         center: [113.92943, 22.531221],
         centroid: [113.940529, 22.545588],
-        nums: 0,
+        nums: 6485,
         level: 'district',
         parent: {
           adcode: 440300
@@ -541,7 +541,7 @@ export const shenzhen = {
         name: '宝安区',
         center: [113.828671, 22.754741],
         centroid: [113.856403, 22.676212],
-        nums: 0,
+        nums: 1415,
         level: 'district',
         parent: {
           adcode: 440300
@@ -1085,7 +1085,7 @@ export const shenzhen = {
         name: '龙岗区',
         center: [114.251372, 22.721511],
         centroid: [114.211811, 22.693008],
-        nums: 0,
+        nums: 3072,
         level: 'district',
         parent: {
           adcode: 440300
@@ -1685,7 +1685,7 @@ export const shenzhen = {
         name: '大鹏新区',
         center: [114.480366, 22.605069],
         centroid: [114.275087, 22.593619],
-        nums: 0,
+        nums: 13,
         level: 'district',
         parent: {
           adcode: 440300
@@ -1947,7 +1947,7 @@ export const shenzhen = {
         name: '盐田区',
         center: [114.235366, 22.555069],
         centroid: [114.275087, 22.593619],
-        nums: 0,
+        nums: 765,
         level: 'district',
         parent: {
           adcode: 440300
@@ -2128,7 +2128,7 @@ export const shenzhen = {
         name: '龙华区',
         center: [114.044346, 22.691963],
         centroid: [114.03474, 22.684145],
-        nums: 0,
+        nums: 1918,
         level: 'district',
         parent: {
           adcode: 440300
@@ -2495,7 +2495,7 @@ export const shenzhen = {
         name: '坪山区',
         center: [114.338441, 22.69423],
         centroid: [114.361832, 22.688325],
-        nums: 0,
+        nums: 874,
         level: 'district',
         parent: {
           adcode: 440300
@@ -2826,7 +2826,7 @@ export const shenzhen = {
         name: '光明区',
         center: [113.935895, 22.748816],
         centroid: [113.931243, 22.763207],
-        nums: 0,
+        nums: 283,
         level: 'district',
         parent: {
           adcode: 440300

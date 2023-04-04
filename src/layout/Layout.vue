@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import Header from './Header.vue'
-import Map from './Map/index.vue'
+import Map from './Map/Map.vue'
 import NavBar from './NavBar.vue'
-import AppMain from './AppMain.vue'
+import Main from './Main.vue'
 </script>
 
 <template>
   <div class="app-wrapper">
-    <Map />
-    <!-- <AutoScale> -->
     <Header />
-    <!-- </AutoScale> -->
-    <AppMain />
+    <Map />
+    <Main />
     <NavBar />
   </div>
 </template>

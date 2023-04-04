@@ -16,5 +16,8 @@ import { RouterLink } from 'vue-router'
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
+  background-color: aquamarine;
+  border-radius: 4px;
+  padding: 10px;
 }
 </style>

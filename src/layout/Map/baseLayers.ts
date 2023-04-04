@@ -55,7 +55,7 @@ export const baseLayers: object[] = [
     source: 'map-source',
     filter: false,
     paint: {
-      'fill-extrusion-color': '#0773BF',
+      'fill-extrusion-color': '#00CEBF',
       'fill-extrusion-height': 2020,
       'fill-extrusion-base': 2000
     }

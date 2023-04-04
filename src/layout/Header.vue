@@ -1,17 +1,22 @@
 <template>
-  <div class="header">header</div>
+  <AutoScale
+    :options="{
+      width: 1920,
+      height: 90,
+      top: 0
+    }"
+  >
+    <div class="header"><h1>header</h1></div>
+  </AutoScale>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped>
 .header {
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-color: #0005;
-  height: 90px;
+  background-color: #0006;
   text-align: center;
-  z-index: 1;
+  height: 100%;
+  color: #fff;
 }
 </style>
