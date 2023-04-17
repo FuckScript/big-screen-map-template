@@ -1,6 +1,7 @@
 import service from '@/api/http'
 
-// 获取地图统计人数
-export function getCountBjDataByArea(params: object | undefined) {
-  return service.post('/system/bjAnalysis/countBjDataByArea', params)
+const mapApi = {
+  // 获取地图统计人数
+  getCountBjDataByArea: (params: object | undefined) => service.post('/system/bjAnalysis/countBjDataByArea', params)
 }
+export default mapApi

@@ -28,7 +28,7 @@ import { shenzhen } from './data/shenzhen'
 import { baoan } from './data/baoan'
 import options from './options'
 import { baseLayers } from './baseLayers'
-// import { getCountBjDataByArea } from '@/api/modules/mapBase'
+// import mapApi from '@/api/modules/mapBase'
 
 const map = ref()
 // const mapPath = ref(['shenzhen'])
@@ -205,7 +205,7 @@ onMounted(() => {
     addEventListeners()
 
     mapColorFill(shenzhen)
-    /* getCountBjDataByArea({ addressLevel: 6, addressId: '4403' }).then((res) => {
+    /* mapApi.getCountBjDataByArea({ addressLevel: 6, addressId: '4403' }).then((res) => {
       const { features } = res.data
       shenzhen.features.forEach((item: any) => {
         item.properties.nums = 0
