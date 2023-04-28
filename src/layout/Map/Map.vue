@@ -13,7 +13,7 @@
         :lng-lat="[114.07798699999998, 22.52946899999999]"
       >
         <template #popup>
-          <p>Hello world!</p>
+          <p class="text-black">Hello world!</p>
         </template>
       </MapboxMarker>
     </MapboxMap>

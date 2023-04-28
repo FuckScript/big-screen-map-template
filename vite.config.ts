@@ -35,7 +35,8 @@ export default defineConfig(
       proxy: {
         '/prod-api': {
           // 本地 8000 前端代码的接口 代理到 8888 的服务端口
-          target: 'http://fm-tsj-118:6666',
+          // target: 'http://fm-tsj-118:6666',
+          target: 'http://localhost:3000',
           changeOrigin: true, // 允许跨域
           rewrite: (path) => path.replace('/prod-api', '')
         }

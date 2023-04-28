@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <RouterLink to="/">首页</RouterLink> |
+    <RouterLink to="/">首页</RouterLink>
     <RouterLink to="/about">关于</RouterLink>
   </div>
 </template>
@@ -15,8 +15,7 @@ import { RouterLink } from 'vue-router'
   position: absolute;
   bottom: 30px;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
   border-radius: 4px;
   padding: 10px;
 }
