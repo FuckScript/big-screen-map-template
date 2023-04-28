@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "composite": true,
     "baseUrl": ".",
-    "allowJs": true,
     "module": "ESNext",
     "target": "es2016",
     "lib": [
@@ -19,8 +17,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": [
       "vite/client",
-      "node",
-      "jsdom"
     ],
     "paths": {
       "~/*": [
@@ -31,12 +27,11 @@
       ],
     }
   },
-  "extends": "@vue/tsconfig/tsconfig.node.json",
   "include": [
-    "vite.config.*",
-    "vitest.config.*",
-    "cypress.config.*",
-    "playwright.config.*",
+    "src/**/*",
+    // "vite.config.*",
+    // "vitest.config.*",
+    // "cypress.config.*",
     "presets"
   ],
   "exclude": [

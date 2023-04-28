@@ -1,27 +1,5 @@
 # big-screen-map-template
 
-[eslint+prettier配置](https://blog.csdn.net/Y2ANGAO/article/details/125771164)
-This template should help get you started developing with Vue 3 in Vite.
-
-## ts波浪线提示:报在同时启用了 “preserveValueImports“ 和 “isolatedModules“ 时，必须使用仅类型导入进行导入,vue3+vite+ts开发时遇到了这个报错，只需要在tsconfig.json或tsconfig.app.json文件中配置"preserveValueImports": false即可，注意要配置在"compilerOptions"对象中，否则不生效
-
-```json
-// tsconfig.app.json
-{
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["src/**/**tests**/*"],
-  "compilerOptions": {
-    "composite": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "preserveValueImports": false //加上这个
-  }
-}
-```
-
 ## [husky的使用](https://www.jianshu.com/p/4da42c9b4cf1)
 
 ## [vue-mapbox-gl](https://vue-mapbox-gl.studiometa.dev/)
