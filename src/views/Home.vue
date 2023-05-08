@@ -22,7 +22,6 @@ watch(id, () => {
 
 <template>
   <!-- <TheWelcome /> -->
-  spense>
   <AutoScale
     :options="{
       width: 450,
